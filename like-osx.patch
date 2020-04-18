@@ -1,0 +1,26 @@
+diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
+index 12f47a82e..fc038ff18 100644
+--- a/include/freetype/config/ftoption.h
++++ b/include/freetype/config/ftoption.h
+@@ -126,7 +126,7 @@ FT_BEGIN_HEADER
+    * macro is not defined, FreeType offers alternative LCD rendering
+    * technology that produces excellent output without LCD filtering.
+    */
+-/* #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
++#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+ 
+ 
+   /**************************************************************************
+diff --git a/src/smooth/ftsmooth.c b/src/smooth/ftsmooth.c
+index cd034d2b4..8783b8a7c 100644
+--- a/src/smooth/ftsmooth.c
++++ b/src/smooth/ftsmooth.c
+@@ -174,6 +174,8 @@
+       y_shift += origin->y;
+     }
+ 
++    FT_Outline_EmboldenXY( outline, 8, 20 );
++
+     /* translate outline to render it into the bitmap */
+     if ( x_shift || y_shift )
+       FT_Outline_Translate( outline, x_shift, y_shift );
